@@ -1,0 +1,36 @@
+We started the assignment by installing docker. I had Fedora installed with me, so I had some issues with dnf, but was immediatedly solved by "dnf update".
+Once Docker was installed, we pulled riscv tools Docker image from the repo.
+After cloning repo for xv6, we were ready to boot up the OS.
+We ran xv6 using the command. The only issue in that was finding path in your host system, but it was quite easy.
+
+Then we made the HelloWorld.S file.
+Placed it in the user directory and added the entry in the Makefile file.
+After running qemu, it was compiled and ready to use.
+
+Now, using HelloWorld command, we can get the desired code.
+
+Code explanation:-
+
+.section .data
+str: .asciz "Hello CS23B020! Welcome to CS3500\n"
+
+.section .text
+.global main
+
+main:
+    la a1, str
+    li a2, 34
+    li a7, 16
+    ecall
+    li a7, 2
+    ecall
+
+The first 2 lines define str as "Hello CS23B020! Welcome to CS3500\n", which was the desired message.
+The next two lines declared the main function.
+Now, in the main function, a1 loads the address of str, which will be used in ecall later.
+a2 has the size of the string. Value in a2 controls how many characters will be printed.
+a7 has the code for ecall. Here 16 means SYS_write. 
+ecall is called
+Now a7 has 2, which means SYS_exit
+It makes sure that system doesn't print for an infinite loop.
+Again, ecall is called, which exits the program.
