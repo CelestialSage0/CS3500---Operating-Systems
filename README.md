@@ -3,7 +3,7 @@
 ## Booting up xv6
 Start Docker:
 ```
-sudo ystemctl start docker
+sudo systemctl start docker
 ```
 Run riscv tools:
 ```
