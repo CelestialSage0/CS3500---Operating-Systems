@@ -2,13 +2,17 @@
 
 ## Booting up xv6
 Start Docker:
-``` systemctl start Docker ```
+```
+sudo ystemctl start docker
+```
 Run riscv tools:
 ```
 docker run -it -v /home/abhishek/CS3500/xv6-riscv:/home/os-iitm/xv6-riscv svkv/riscv-tools:v1.0
 ```
 Compile xv6:
-``` cd xv6-riscv && make qemu ```
+```
+make qemu 
+```
 
 ## Debugging with GDB
 
