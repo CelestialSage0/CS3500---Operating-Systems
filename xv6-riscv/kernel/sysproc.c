@@ -92,11 +92,14 @@ sys_uptime(void)
   return xticks;
 }
 
+// Added sys_trace function
 uint64
 sys_trace(void)
 {
   int mask;
-  argint(0, &n);
-  myproc->trace_mask = mask;
+
+  if(argint(0, &mask)<0){ return -1; }
+
+  myproc()->trace_mask = mask;
   return 0;
 }
