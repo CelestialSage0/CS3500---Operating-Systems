@@ -192,7 +192,7 @@ backtrace(void)
 
   while (fp >= PGROUNDDOWN(fp) && fp < stack_top) {
     uint64 ra = *(uint64 *)(fp - 8);   // return address
-    printf("%p\n", ra);
+    printf("%p\n",(void *)ra);
 
     fp = *(uint64 *)(fp - 16);         // previous frame pointer
     if (fp == 0)
