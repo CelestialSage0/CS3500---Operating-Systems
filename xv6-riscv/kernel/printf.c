@@ -176,3 +176,23 @@ printfinit(void)
   initlock(&pr.lock, "pr");
   pr.locking = 1;
 }
+
+// Implementation of backtrace function
+void
+backtrace(void)
+{
+  uint64 fp = r_fp();  // current frame pointer
+  uint64 stack_top = PGROUNDDOWN(fp) + PGSIZE; // top of kernel stack page
+
+  printf("backtrace:\n");
+
+  while (fp >= PGROUNDDOWN(fp) && fp < stack_top) {
+    uint64 ra = *(uint64 *)(fp - 8);   // return address
+    printf("%p\n", ra);
+
+    fp = *(uint64 *)(fp - 16);         // previous frame pointer
+    if (fp == 0)
+      break;
+  }
+}
+
