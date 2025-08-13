@@ -133,6 +133,11 @@ syscall(void)
 {
   int num;
   struct proc *p = myproc();
+  
+  // Checking whether trace is enabled or not
+  if(p->trace_mask){
+	  printf("%d: syscall %s -> %d\n", p->pid, syscalls_names[num], ret);
+  }
 
   num = p->trapframe->a7;
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
