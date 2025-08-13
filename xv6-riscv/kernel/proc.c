@@ -283,6 +283,9 @@ fork(void)
   struct proc *np;
   struct proc *p = myproc();
 
+  // Copying trace_mask to new process
+  np->trace_mask = p->trace_mask;
+
   // Allocate process.
   if((np = allocproc()) == 0){
     return -1;
