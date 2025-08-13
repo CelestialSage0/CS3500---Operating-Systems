@@ -289,7 +289,7 @@ fork(void)
   }
 
   // Copying trace_mask to child process
-  np->trace_mask = p->trace_mask
+  np->trace_mask = p->trace_mask;
 
   // Copy user memory from parent to child.
   if(uvmcopy(p->pagetable, np->pagetable, p->sz) < 0){
