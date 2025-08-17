@@ -9,5 +9,6 @@ main(int argc, char *argv[])
     trace(mask);
 
     exec(argv[2], &argv[2]);
+    return 0;
 }
 

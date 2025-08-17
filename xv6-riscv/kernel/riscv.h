@@ -1,6 +1,6 @@
 #ifndef __ASSEMBLER__
 
-// Adding the function
+// backtrace
 static inline uint64
 r_fp()
 {
